@@ -33,7 +33,7 @@ document.getElementById("k_input").addEventListener("keyup", (event) => {
 document.getElementById("GO").addEventListener("click", () => {
   if (listlistlist && K) {
     document.getElementById("result").innerText =
-      "[" + `${MERHABALAR(listlistlist, K)}` + "]";
+      "[ " + `${MERHABALAR(listlistlist, K)}` + " ]";
       listlistlist = []
       K = 0;
       document.getElementById("inp").disabled = true
