@@ -1,6 +1,6 @@
-function MERHABALAR(array = [], k = 0) {
+function SlidingWindowMaximum(array = [], k = 0) {
   finalList = [];
-  for (i = 0; i < array.length - 2; i++) {
+  for (i = 0; i < array.length - (k - 1); i++) {
     let newList = [];
     let max = 0;
     for (y = i; y < (i + k <= array.length ? i + k : array.length); y++) {
@@ -12,6 +12,7 @@ function MERHABALAR(array = [], k = 0) {
 }
 let listlistlist = [];
 let K = 0;
+document.getElementById("CLEAR").style.visibility = "hidden";
 document.getElementById("inp").addEventListener("keyup", (event) => {
   if (event.keyCode === 13 && document.getElementById("inp").value) {
     event.preventDefault();
@@ -33,14 +34,17 @@ document.getElementById("k_input").addEventListener("keyup", (event) => {
 document.getElementById("GO").addEventListener("click", () => {
   if (listlistlist && K) {
     document.getElementById("result").innerText =
-      "[ " + `${MERHABALAR(listlistlist, K)}` + " ]";
-      listlistlist = []
-      K = 0;
-      document.getElementById("inp").disabled = true
-      document.getElementById("k_input").disabled = true
-  }else{
-    document.getElementById("result").innerText = 'Array veya K değeri boş bırakılamaz !'
-
+      "[ " + `${SlidingWindowMaximum(listlistlist, K)}` + " ]";
+    listlistlist = [];
+    K = 0;
+    document.getElementById("inp").disabled = true;
+    document.getElementById("k_input").disabled = true;
+    document.getElementById("CLEAR").style.visibility = "visible";
+  } else {
+    document.getElementById("result").innerText =
+      "Array veya K değeri boş bırakılamaz !";
   }
 });
-document.getElementById('CLEAR').addEventListener('click', () => window.location.reload())
+document
+  .getElementById("CLEAR")
+  .addEventListener("click", () => window.location.reload());
